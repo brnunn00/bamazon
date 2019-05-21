@@ -4,14 +4,8 @@ var table = require('easy-table')
 
 var connection = mysql.createConnection({
     host: "localhost",
-
-    // Your port; if not 3306
-    port: 3306,
-
-    // Your username
-    user: "root",
-
-    // Your password
+    port: 3306,    
+    user: "root",   
     password: "",
     database: "bamazon_DB"
 });

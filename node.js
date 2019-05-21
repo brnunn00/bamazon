@@ -124,7 +124,7 @@ function customerSearch() {
 
 function processOrder(orderQ, id) {
 
-    connection.query("Select * from products where item_id=" + id, function (err, res) {
+    connection.query("Select * from products where item_id=?",  [id], function (err, res) {
         let quan = res[0].stock_quantity;
         let remaining = quan - orderQ;
         if (orderQ > quan) {
@@ -133,7 +133,7 @@ function processOrder(orderQ, id) {
                     name: "quantError",
                     type: "input",
                     validate: numTest,
-                    message: "That's too much man. Enter a quantity less than " + quan
+                    message: "That's too much man. Enter a quantity less than or equal to " + quan
 
                 }).then(function (answer) {
                     processOrder(answer.quantError, id);
